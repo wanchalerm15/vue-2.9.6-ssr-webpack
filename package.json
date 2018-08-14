@@ -1,6 +1,7 @@
 {
   "name": "vue-webpack",
   "version": "1.0.0",
+  "main": "server.js",
   "description": "A Vue.js project",
   "author": "ttvone.com",
   "private": true,
@@ -9,10 +10,15 @@
     "start": "npm run dev",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "build": "node build/build.js"
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "node build/build.js",
+    "build:server": "webpack --config build/webpack.server.conf.js",
+    "server": "node ."
   },
   "dependencies": {
-    "vue": "^2.5.2"
+    "express": "^4.16.3",
+    "vue": "^2.5.2",
+    "vue-server-renderer": "^2.5.17"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
